@@ -3,6 +3,7 @@
 ## Comandos básicos do Heroku
 
 * $heroku create -> Configura o projeto corrente baixado do github em uma app Heroku
+* $git push heroku master -> Enviar versao nova para o Heroku
 * $heroku pg:psql --app glacial-thicket-18823 DATABASE -> Configura o banco de dados na aplicação
 * $heroku local web -> Inicializa uma instancia web localmente
 * $heroku pg:pull DATABASE mylocaldb --app glacial-thicket-18823 -> Realiza um pull dos dados do banco de dados para o banco local
