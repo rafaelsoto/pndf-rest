@@ -16,7 +16,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class IntegradorSitePNDF {
 
-
+	
 	
 	public String obterPercurso(String data) throws Exception
 	{
@@ -32,12 +32,27 @@ public class IntegradorSitePNDF {
 			ObjectMapper mapper = new ObjectMapper();
 			in.close();	
 			return 	mapper.writeValueAsString(this.parse(outputString,data));
-			
-		
 
-		
 	}
 	
+	public Percurso obterPercursoSite(String data) throws Exception
+	{
+			String url = "http://pedalnoturnodf.com.br/pedaldehoje/"+data+".txt";
+		
+
+			BufferedReader in = new BufferedReader(
+			        new InputStreamReader(HTTPDownloadUtility.downloadFile(url)));
+			
+			StringWriter writer = new StringWriter();
+			IOUtils.copy(in, writer);
+			String outputString = writer.toString();
+			
+			in.close();	
+			return 	this.parse(outputString,data);
+
+	}
+	
+
 	
 	private Percurso parse(String textoOriginal, String data) throws ParseException
 	{
